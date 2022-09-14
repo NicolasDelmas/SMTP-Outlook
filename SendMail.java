@@ -50,7 +50,7 @@ public class SendMail {
 
             Transport.send(message);
 
-            System.out.println("Le mail c'est envoyé");
+            System.out.println("Le mail s'est envoyé");
 
         } catch (MessagingException e) {
             e.printStackTrace();
