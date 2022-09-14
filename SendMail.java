@@ -11,9 +11,9 @@ import javax.mail.internet.MimeMultipart;
 public class SendMail {
 
     public void Send() throws IOException {
-        String to = "nicolas.delmas78@gmail.com"; // to address. It can be any like gmail, hotmail etc.
-        final String from = "nide60820@eleve.isep.fr"; // from address. As this is using Gmail SMTP.
-        final String password = "Uosr1304:"; // password for from mail address.
+        String to = "nicolas.delmas@lyvoc.com";
+        final String from = "monMail@OutLook.com";
+        final String password = "monMotDePasse";
 
         Properties prop = new Properties();
 
@@ -33,9 +33,9 @@ public class SendMail {
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(from));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
-            message.setSubject("Message from Java Simplifying Tech");
+            message.setSubject("Objet");
 
-            String msg = "This email sent using JavaMailer API from Java Code!!!";
+            String msg = "Corps du message";
 
             MimeBodyPart mimeBodyPart = new MimeBodyPart();
             mimeBodyPart.setContent(msg, "text/html");
@@ -44,13 +44,13 @@ public class SendMail {
             multipart.addBodyPart(mimeBodyPart);
 
             MimeBodyPart attachmentBodyPart = new MimeBodyPart();
-            attachmentBodyPart.attachFile(new File("F:\\Nicolas\\Documents Perso\\Carte d'identite recto.jpg"));
+            attachmentBodyPart.attachFile(new File("pieceJointePath"));
             multipart.addBodyPart(attachmentBodyPart);
             message.setContent(multipart);
 
             Transport.send(message);
 
-            System.out.println("Mail successfully sent..");
+            System.out.println("Le mail c'est envoyé");
 
         } catch (MessagingException e) {
             e.printStackTrace();
