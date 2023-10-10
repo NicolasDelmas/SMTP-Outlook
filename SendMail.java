@@ -11,9 +11,9 @@ import javax.mail.internet.MimeMultipart;
 public class SendMail {
 
     public void Send() throws IOException {
-        String to = "nicolas.delmas@lyvoc.com";
-        final String from = "monMail@OutLook.com";
-        final String password = "monMotDePasse";
+        String to = "receiverEmail";
+        final String from = "yourEmail@outlook.com"; //you must use an outlook email
+        final String password = "passwordOfYourEmail";
 
         Properties prop = new Properties();
 
@@ -35,7 +35,7 @@ public class SendMail {
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
             message.setSubject("Objet");
 
-            String msg = "Corps du message";
+            String msg = "Body of the mail";
 
             MimeBodyPart mimeBodyPart = new MimeBodyPart();
             mimeBodyPart.setContent(msg, "text/html");
@@ -50,7 +50,7 @@ public class SendMail {
 
             Transport.send(message);
 
-            System.out.println("Le mail s'est envoyé");
+            System.out.println("The mail has been sent");
 
         } catch (MessagingException e) {
             e.printStackTrace();
